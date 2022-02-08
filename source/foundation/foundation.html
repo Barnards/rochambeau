@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rochambeau</title>
+    <link href = "/source/styles/base.css" rel = "stylesheet">
+    <link rel="icon" href= "resources/paifang2.png">
+    <script src="/source/js/script.js"></script>
+</head>
+<body>
+    <div class = "wrapper">
+        <div class = "inner-wrapper">
+            <div class = "header">
+                <h1>Rock paper scissors</h1>
+            </div>
+            <button class="context" title="change context">
+                Change context
+            </button>
+            <div class = "computer-area">
+                <div class = "computer-choice">
+                    
+                </div>
+                <div class = "computer-character">
+
+                </div>
+            </div>
+            <button class="play-button" title="play" onclick="beginPlay()">
+                Play
+            </button>
+            <div class = "player-area">
+                <div class = "player-choice">
+                    <button class="choice-rock" title="rock"
+                    onclick="getSelected(1)">
+                        Rock
+                    </button>
+                    <button class="choice-paper" title="paper"
+                            onclick="getSelected(2)">
+                        Paper
+                    </button>
+                    <button class="choice-scissors" title="scissors"
+                            onclick="getSelected(3)">
+                        Scissors
+                    </button>
+                </div>
+                <div class = "player-character">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class = "context-window">
+        <ul class="slider">
+            <li>
+                <input type="radio" id="slide1" name="slide" checked>
+                <label for="slide1"></label>
+                <img src="https://dribbble.s3.amazonaws.com/users/322/screenshots/872485/coldchase.jpg" alt="Panel 1">
+            </li>
+            <li>
+                <input type="radio" id="slide2" name="slide">
+                <label for="slide2"></label>
+                <img src="https://dribbble.s3.amazonaws.com/users/322/screenshots/980517/icehut_sm.jpg" alt="Panel 2">
+            </li>
+            <li>
+                <input type="radio" id="slide3" name="slide">
+                <label for="slide3"></label>
+                <img src="https://dribbble.s3.amazonaws.com/users/322/screenshots/980517/icehut_sm.jpg" alt="Panel 3">
+            </li>
+        </ul>
+    </div>
+    <div class = ".result-window.offscreen">
+        <h2 class = "result-heading"></h2>   
+        <h3 class = "result-subheading"></h3>
+    </div>
+</body>
+</html>
