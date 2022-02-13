@@ -163,6 +163,62 @@ let resultWindow = document.getElementsByClassName('result-window')[0];
 let resultHeading = document.getElementsByClassName('result-heading')[0];
 let resultSubheading =document.getElementsByClassName('result-subheading')[0];
 
+
+
+strokeWeight(31);
+stroke(255, 255, 0)
+line(83, 116, 271, 74);
+
+fill(255, 255, 0);
+stroke(255, 255, 0)
+ellipse(206,206,100*4.3,100*4.3);
+
+ellipse(206,206,100*3,100*3);
+
+ellipse(206,206,100*1.9,100*1.9);
+
+ellipse(206,206,100,100);
+
+
+// Winston's handsome features don't need outlines
+noStroke();
+
+var eyeSize = 40;
+
+//position of the centre of face
+var x = 200;
+
+// face
+fill(255, 255, 0);
+ellipse(x, 208, 300, 300);
+
+// eyes
+fill(46, 46, 41);
+//move an eye 50 px to the left of centre
+ellipse(x - 50, 151, eyeSize, eyeSize);
+ellipse(300, 142, eyeSize, eyeSize);
+
+// mouth
+fill(252, 65, 65);
+ellipse(250, 240, 120, 136);
+
+
+
+
+requestAnimationFrame((_) => {
+    while(GRID.firstChild) { GRID.removeChild(GRID.firstChild); }
+    cards.map((card) => { 
+        GRID.appendChild(card.element); 
+        for (let i = 0; i < cards.length; i++) {
+            setTimeout(
+                () => { cards[i].animateIn(); },
+                i * delayBetweenCards
+            );
+            continue;
+        }  
+        return; });
+    return;
+});
 //Function to get keyboard input
 
 // document.addEventListener('keydown', (event) => {

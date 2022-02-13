@@ -1,20 +1,85 @@
-
+@media (prefers-color-scheme: light) {
+    :root{
+        --primary-color: #005e68;
+        --secondary-color: #01939a;
+        --background-color: #00000000 linear-gradient(180deg, 
+                            #c7f6fe 10%, 
+                            #e0f0f0 40%, 
+                            #f7eecae8 65%, 
+                            #fbd28f 100%) 
+                            0% 0% no-repeat padding-box;
+        --backlight-color: #effdff;
+        --border-color: #8dbcc3;
+        --text-color: #292929;
+        --box-shadow-color: #b9b9b9;
+        --navbar-color:#30303000;
+        --svg-filter: invert(46%) sepia(80%) saturate(100%) hue-rotate(
+            130deg) brightness(80%) contrast(400%);
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root{
+        --primary-color: #fbffff;
+        --secondary-color: #08b0a8;
+        --background-color: #00000000 linear-gradient(180deg, 
+                            #c7f6fe 10%, 
+                            #e0f0f0 40%, 
+                            #f7eecae8 65%, 
+                            #fbd28f 100%) 
+                            0% 0% no-repeat padding-box;
+        --backlight-color: #314644;
+        --border-color: #f6fffe9e;
+        --text-color: #432a20;
+        --box-shadow-color: #333333;
+        --navbar-color: #00000000 linear-gradient(0deg, 
+                        #45454552 6%, 
+                        #ddd5d533 100%) 
+                        0% 0% no-repeat padding-box;
+        --svg-filter: invert(46%) sepia(80%) saturate(100%) hue-rotate(
+            130deg) brightness(120%) contrast(400%);
+    }
+    
+    *.show-light-only {
+        display: none;
+    }
+    *.show-dark-only {
+        display: unset;
+    }
+}
+svg {
+    filter: var(--svg-filter);
+}
 :root {
     --visibile-switch: 0;
   }
 
-
+h1{
+    font-size: 50px;
+    font-weight: 10000;
+    color: var(--text-color);
+}
 h2 {
     font-size: 50px;
-    font-weight: 1000;
-    color: #000;
+    font-weight: 10000;
+    color: var(--text-color);
 }
 
 p {
     font-size: 15px;
     color:#000
 }
-
+body{
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0px;
+    padding: 0px;
+    background: var(--background-color);
+    min-height: 100vh;
+    position: relative;
+    box-sizing: border-box;
+    border-width: 0px;
+}
 .wrapper{
     display: flex;
     justify-content: center;
@@ -34,12 +99,11 @@ p {
     justify-content: space-between;
     flex-direction: column;
     align-content: center;
+    align-items: center;
     margin: 20px;
 }
 
-.play-button{
-    visibility:visible;
-}
+
 
 .computer-area{
     display: flex;
@@ -51,16 +115,26 @@ p {
 }
 
 .player-area{
+    position:relative;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-content: center;
     align-items: center;
     margin:20px;
+    max-width: 400px;
+    max-height:400px;
 }
 
 .player-choice{
-    visibility:hidden;
+    display: flex;
+    gap: 8vw;
+    visibility: hidden;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
 
 
@@ -94,6 +168,77 @@ p {
     color:#000;
 }
 
+button {
+    appearance: auto;
+    -webkit-writing-mode: horizontal-tb !important;
+    /*font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;*/
+    width:110px;
+    height:110px;
+    text-rendering: auto;
+    color: var(--text-color);
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+    background:none;
+    margin: 0em;
+    transition: .2s;
+    border-radius: 19rem;
+    border:var(--text-color);
+    border-width: 8px;
+    border-style: double;
+    cursor:pointer;
+    /* box-shadow: 0px -20px 20px #432a2050 inset; */
+    
+}
+
+button:hover{
+    box-shadow: 0px 10px 20px #fff inset;
+    border-color: #ecffff;
+    border-width:10px;
+    color:#ecffff;
+    
+    
+}
+
+
+
+.play-button{
+    width:120px;
+    height:120px;
+    position: absolute;
+    visibility: visible;
+    top: 20%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.context {
+    visibility:hidden;
+}
 .context-window{
     position: absolute;
     width: 100%;
