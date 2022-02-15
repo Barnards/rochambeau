@@ -29,108 +29,81 @@ function getKey(playerSelection) {
     })
 }
 
-
-function countDownNumber(
-    countDisplay
-) {
-    
-    const targetDiv = document.getElementsByClassName('player-area')[0];
-    const countH3 = document.createElement('h3');
-    countH3.innerText = `${currentCount}`;
-    targetDiv.appendChild(headerH3);
-    let currentCount = '';
-    for (let i = 3; i < 1; i++) {
-        setTimeout(
-            () => { 
-                currentCount -= i;
-             },
-            1000,
-        );
-    }
+function resetVisibility() {
+    document.getElementsByClassName('player-choice')[0].style.visibility = 'hidden';
+    document.getElementsByClassName('play-button')[0].style.visibility ='visible';
 }
 
 
-// begin play when play button is clicked
+// begin play when play button is clicked, -----enter callback hell-----
 function beginPlay(){
+    resetVisibility();
     // hide the play button on click, and give a countdown for player and computer 
-    visibilityToggle("play-button");
-    setTimeout(
-        () => { 
-        
-        },
-        3000,
-        //player and computer move, display button options for player
-        
-        setTimeout(
-            () => { 
-                
-                //generate computer input
-                const computerSelection = Math.floor(Math.random() * (4 - 1) + 1);
-                // console.log(computerSelection);
-                visibilityToggle("player-choice")
-                    //create a string name out of computer input
-                    if (computerSelection === 1 ){
-                        computerSign = 'Rock';
-
-                    }else if (computerSelection === 2 ){
-                        computerSign = 'Paper';
-                        
-                    }else if (computerSelection === 3 ) {
-                        computerSign = 'Scissors';
-                    }
-                    console.log("Computer threw: " ,computerSign);
-                //get player's click/touch input
-                
-                getSelected(playerSelection);
-                // console.log(playerSelection);
-
-                    //create a string name out of player input
-                    if (playerSelection === 1 ){
-                        playerSign = 'Rock';
-                    
-                    }else if (playerSelection === 2 ){
-                        playerSign = 'Paper';
-                        
-                    }else if (playerSelection === 3 ) {
-                        playerSign = 'Scissors';
-                    }
-                    console.log("you threw: " ,playerSign);
-                // compare computer and player inputs
-                const score = playerSelection - computerSelection;
-                console.log(score);
-
-                //calculate the winner and explain decision
-                if (score == -4 || score == 1){
-                    console.log('You win! :' + playerSign + ' beats ' + computerSign);
-                }else if (score == 2 || score == -1){
-                    console.log('You lose... :' + computerSign + ' beats ' + playerSign);
-                }else if (score == 0){
-                    console.log('Draw :' + computerSign + ' ties ' + playerSign);
-                }
-            
-            
-            },
-            4500,
-            //remove player button choice visibility
-            visibilityToggle("player-choice"),
-            setTimeout(
-                () => { 
+    visibilityToggle("play-button"); 
+    
+    setTimeout(() => {
+        console.log('3');
+        setTimeout(() => {
+            console.log('2');
+            setTimeout(() => {
+                console.log('1');
+                setTimeout(() => {
+                    console.log('throw!')
                     visibilityToggle("player-choice");
-                },
-                2000,
-            ),
-            setTimeout(
-                () => { 
-                    visibilityToggle("play-button");
-                    
-                    
-                
-                },
-                6000,
-                
-            )
-        ),
-    );
-    return;
-
+                    setTimeout(() => { 
+                        visibilityToggle("player-choice");
+                        setTimeout(()=>{
+                            //generate computer input
+                            const computerSelection = Math.floor(Math.random() * (4 - 1) + 1);
+                            // console.log(computerSelection);
+                            
+                                //create a string name out of computer input
+                                if (computerSelection === 1 ){
+                                    computerSign = 'Rock';
+            
+                                }else if (computerSelection === 2 ){
+                                    computerSign = 'Paper';
+                                    
+                                }else if (computerSelection === 3 ) {
+                                    computerSign = 'Scissors';
+                                }
+                                console.log("Computer threw: " ,computerSign);
+                            //get player's click/touch input
+                            
+                            getSelected(playerSelection);
+                            // console.log(playerSelection);
+            
+                                //create a string name out of player input
+                                if (playerSelection === 1 ){
+                                    playerSign = 'Rock';
+                                
+                                }else if (playerSelection === 2 ){
+                                    playerSign = 'Paper';
+                                    
+                                }else if (playerSelection === 3 ) {
+                                    playerSign = 'Scissors';
+                                }
+                                console.log("you threw: " ,playerSign);
+                            // compare computer and player inputs
+                            const score = playerSelection - computerSelection;
+                            console.log(score);
+            
+                            //calculate the winner and explain decision
+                            if (score == -4 || score == 1||score == -2){
+                                console.log('You win! :' + playerSign + ' beats ' + computerSign);
+                            }else if (score == 2 || score == -1){
+                                console.log('You lose... :' + computerSign + ' beats ' + playerSign);
+                            }else if (score == 0){
+                                console.log('Draw :' + computerSign + ' ties ' + playerSign);
+                            }
+                            setTimeout(()=>{
+                                resetVisibility();
+                                clearTimeout();
+                            },1000)
+                        },800) //play button reappears
+                    },500) // play begins, time limit for player choice
+                },1000) //throw!, player choice appears
+            },1000) //1
+        },1000) //2
+    }, 200) //3 
 }

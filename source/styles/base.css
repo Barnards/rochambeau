@@ -54,9 +54,14 @@ svg {
   }
 
 h1{
+    font-family: 'Lato', sans-serif;
     font-size: 50px;
+    font-weight: 100;
     font-weight: 10000;
     color: var(--text-color);
+    border: var(--text-color);
+    
+    
 }
 h2 {
     font-size: 50px;
@@ -185,6 +190,8 @@ button {
     text-rendering: auto;
     color: var(--text-color);
     letter-spacing: normal;
+    font-family: 'Lato', sans-serif;
+    font-weight:500;
     word-spacing: normal;
     line-height: normal;
     text-transform: none;
@@ -199,7 +206,7 @@ button {
     transition: .2s;
     border-radius: 19rem;
     border:var(--text-color);
-    border-width: 8px;
+    border-width: 1px;
     border-style: double;
     cursor:pointer;
     /* box-shadow: 0px -20px 20px #432a2050 inset; */
@@ -209,7 +216,7 @@ button {
 button:hover{
     box-shadow: 0px 10px 20px #fff inset;
     border-color: #ecffff;
-    border-width:10px;
+    border-width:3px;
     color:#ecffff;
     
     
