@@ -1,7 +1,5 @@
 
-let resultHeading = document.getElementsByClassName('result-heading')[0];
-let resultSubheading =document.getElementsByClassName('result-subheading')[0];
-
+// switch button visibility to the opposite of its current state
 function visibilityToggle(
     targetDiv   // String
     ) {
@@ -15,10 +13,12 @@ function visibilityToggle(
     }
 }
 
+// get player choice from mouse
 function getSelected(number){
      playerSelection = number;
 }
 
+// get player choice from keyboard
 function getKey(playerSelection) {
     document.addEventListener('keydown', (event) => {
         playerSelection = event.key;
@@ -29,11 +29,14 @@ function getKey(playerSelection) {
     })
 }
 
+// resets button visibility when game is over
 function resetVisibility() {
     document.getElementsByClassName('player-choice')[0].style.visibility = 'hidden';
     document.getElementsByClassName('play-button')[0].style.visibility ='visible';
 }
 
+
+//creates a visual countdown for game start, placed underneath play button
 function countDown (currentCount) {
     const countDown = document.getElementsByClassName('countdown')[0];
 
@@ -46,25 +49,53 @@ function countDown (currentCount) {
 }
 
 
-// begin play when play button is clicked, -----enter callback hell-----
+// create two pieces of text that appear in the middle of the screen when called
+// the second text describes the first, and has a slight delay for visual effect
+function resultDisplay (displayedResult,explainedResult) {
+    const resultDiv = document.getElementsByClassName('result')[0];
+
+    const resultH3 = document.createElement('h3');
+    const resultH4 = document.createElement('h4');
+    resultH3.innerText = displayedResult;
+    resultH4.innerText = explainedResult;
+    resultDiv.appendChild(resultH3);
+
+    setTimeout(()=>{
+        resultDiv.appendChild(resultH4);
+    },500)
+
+    setTimeout(()=>{
+        resultDiv.removeChild(resultH3)
+        resultDiv.removeChild(resultH4)
+    },4000)
+}
+
+//  beware, you're about to enter...
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////                              /////////////////////////
+///////////////////////// -----  CALLBACK HELL  -----  /////////////////////////
+/////////////////////////                              /////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+// begin play when play button is clicked, 
 function beginPlay(){
     resetVisibility();
     // hide the play button on click, and give a countdown for player and computer 
     visibilityToggle("play-button"); 
+    playerSelection = false;  // if the player fails to select
     setTimeout(() => {
         console.log('2');
         countDown('RO');
         setTimeout(() => {
-            countDown('');
-            console.log('1');
-            countDown('SHAM');
+            console.log('1');   // countdown
+            countDown('SHAM'); 
             setTimeout(() => {
-                countDown('');
                 console.log('throw!')
-                countDown('BO');
-                visibilityToggle("player-choice");
+                countDown('BEAU');
+                visibilityToggle("player-choice");   // display buttons
                 setTimeout(() => { 
-                    visibilityToggle("player-choice");
+                    visibilityToggle("player-choice");  //remove buttons 
                     setTimeout(()=>{
                         //generate computer input
                         const computerSelection = Math.floor(Math.random() * (4 - 1) + 1);
@@ -81,10 +112,9 @@ function beginPlay(){
                                 computerSign = 'Scissors';
                             }
                             console.log("Computer threw: " ,computerSign);
+
                         //get player's click/touch input
-                        
                         getSelected(playerSelection);
-                        // console.log(playerSelection);
         
                             //create a string name out of player input
                             if (playerSelection === 1 ){
@@ -95,7 +125,14 @@ function beginPlay(){
                                 
                             }else if (playerSelection === 3 ) {
                                 playerSign = 'Scissors';
+                            }else if (playerSelection  === false) {
+                                console.log('You lose','hesitation is defeat');
+                                resultDisplay('YOU LOSE', 'hesitation is defeat');
+                                resetVisibility();
+                                clearTimeout();
+                                return;
                             }
+
                             console.log("you threw: " ,playerSign);
                         // compare computer and player inputs
                         const score = playerSelection - computerSelection;
@@ -104,18 +141,21 @@ function beginPlay(){
                         //calculate the winner and explain decision
                         if (score == -4 || score == 1||score == -2){
                             console.log('You win! :' + playerSign + ' beats ' + computerSign);
+                            resultDisplay('YOU WIN', computerSign + ' beats ' + playerSign);
                         }else if (score == 2 || score == -1){
                             console.log('You lose... :' + computerSign + ' beats ' + playerSign);
+                            resultDisplay('YOU LOSE...' , computerSign + ' beats ' + playerSign);
                         }else if (score == 0){
                             console.log('Draw :' + computerSign + ' ties ' + playerSign);
+                            resultDisplay('DRAW', computerSign + ' ties ' + playerSign);
                         }
                         setTimeout(()=>{
-                            resetVisibility();
-                            clearTimeout();
+                            resetVisibility();  //reset game
+                            clearTimeout();    
                         },1000)
                     },800) //play button reappears
                 },500) // play begins, time limit for player choice
-            },800) //BO!, player choice appears
+            },800) //BEAU!, player choice appears
         },800) //SHAM
     },200) //RO
 }
