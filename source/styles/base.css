@@ -64,8 +64,9 @@ h1{
     
 }
 h2 {
-    font-size: 50px;
-    font-weight: 10000;
+    font-family: 'Lato', sans-serif;
+    font-size: 40px;
+    font-weight: 500;
     color: var(--text-color);
 }
 
@@ -129,6 +130,22 @@ body{
     margin:20px;
     max-width: 400px;
     max-height:400px;
+}
+
+.play-button{
+    width:120px;
+    height:120px;
+    position: absolute;
+    visibility: visible;
+    top: 20%;
+    z-index: 2;
+}
+
+.countdown {
+    position: absolute;
+    visibility: visible;
+    top: 20%;
+    z-index: 1;
 }
 
 .player-choice{
@@ -223,14 +240,6 @@ button:hover{
 }
 
 
-
-.play-button{
-    width:120px;
-    height:120px;
-    position: absolute;
-    visibility: visible;
-    top: 20%;
-}
 
 
 
