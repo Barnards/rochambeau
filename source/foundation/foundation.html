@@ -13,48 +13,51 @@
     <script src="/source/js/script.js"></script>
 </head>
 <body>
+    <div class = "header">
+        <h1>ROCHAMBEAU</h1>
+    </div>
     <div class = "wrapper">
-        <div class = "inner-wrapper">
-            <div class = "header">
-                <h1>ROCHAMBEAU</h1>
-            </div>
-            <button class="context" title="change context">
-                Change context
-            </button>
-            <div class = "computer-area">
-                <div class = "computer-choice">  
-                </div>
-                <div class = "computer-character">
-                </div>
-            </div>
-            <div class = 'result'>
-            </div>
-            <div class = "player-area">
-                <button class="play-button" title="play" onclick="beginPlay()">
-                    PLAY
-                </button>
-                <div class="countdown">
-                </div>
-                <div class = "player-choice">
-                    
-                    <button class="choice-rock" title="rock"
-                    onclick="getSelected(1)">
-                        ROCK
-                    </button>
-                    <button class="choice-paper" title="paper"
-                            onclick="getSelected(2)">
-                        PAPER
-                    </button>
-                    <button class="choice-scissors" title="scissors"
-                            onclick="getSelected(3)">
-                        SCISSORS
-                    </button>
-                </div>
-                <div class = "player-character">
+        <div class = "visuals">
+            <img src = "/images/Planet-2.png" class = "planet-2">
+            <img src = "/images/Planet-1.png" class = "planet-1">
+            <img src = "/images/FarBackground.png" class = "far-background">
+            <img src = "/images/Background.png" class = "background">
+            <img src = "/images/Midground.png" class = "midground">
+            <img src = "/images/Scissors.png" class = "scissors">
+            <img src = "/images/Paper.png" class = "paper">
+            <img src = "/images/Rock.png" class = "rock">
+            <img src = "/images/Foreground.png" class = "foreground">
+            <img src = "/images/Player.png" class = "player">
+        </div>
 
-                </div>
+        <div class = 'result'>
+            <h2> yes</h2>
+            <h3>well</h3>
+        </div>
+        <div class = "player-area">
+            <button class="play-button" title="play" onclick="beginPlay()">
+                PLAY
+            </button>
+            <div class="countdown">
+            </div>
+            <div class = "player-choice">
+                
+                <button class="choice-rock" title="rock"
+                onclick="getSelected(1)">
+                    ROCK
+                </button>
+                <button class="choice-paper" title="paper"
+                        onclick="getSelected(2)">
+                    PAPER
+                </button>
+                <button class="choice-scissors" title="scissors"
+                        onclick="getSelected(3)">
+                    SCISSORS
+                </button>
             </div>
         </div>
+        
     </div>
+
 </body>
 </html>

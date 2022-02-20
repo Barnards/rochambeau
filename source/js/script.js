@@ -70,6 +70,31 @@ function resultDisplay (displayedResult,explainedResult) {
     },4000)
 }
 
+//stops whitespace from forming below parallax images
+window.onscroll = function () { window.scrollTo(0, 0); };
+
+class ScoreCounter {
+    
+    constructor(
+        playerElement,   //html dom element
+        computerElement, //html dom element
+        playerScore,     //int
+        computerScore    //int
+    )
+        {
+            this._playerElement = playerElement;
+            this._computerElement = computerElement;
+            this._playerScore = playerScore;
+            this._computerScore = computerScore;
+
+            const self = this
+            
+
+        }
+
+
+}
+
 //  beware, you're about to enter...
 
 ////////////////////////////////////////////////////////////////////////////////
