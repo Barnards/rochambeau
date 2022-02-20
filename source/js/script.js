@@ -55,45 +55,66 @@ function resultDisplay (displayedResult,explainedResult) {
     const resultDiv = document.getElementsByClassName('result')[0];
 
     const resultH3 = document.createElement('h3');
-    const resultH4 = document.createElement('h4');
+    const resultH5 = document.createElement('h5');
     resultH3.innerText = displayedResult;
-    resultH4.innerText = explainedResult;
+    resultH5.innerText = explainedResult;
     resultDiv.appendChild(resultH3);
 
     setTimeout(()=>{
-        resultDiv.appendChild(resultH4);
+        resultDiv.appendChild(resultH5);
     },500)
 
     setTimeout(()=>{
         resultDiv.removeChild(resultH3)
-        resultDiv.removeChild(resultH4)
+        resultDiv.removeChild(resultH5)
     },4000)
+}
+
+
+
+// function scoreCounter (playerCount,computerCount) {
+    
+
+//     const playerScoreDiv = document.getElementsByClassName('player-score')[0];
+//     const computerScoreDiv = document.getElementsByClassName('computer-score')[0];
+
+//     const playerScoreH4 = document.createElement('h4');
+//     const computerScoreH4 = document.createElement('h4');
+
+//     playerScoreH4.innerText = playerTotal;
+//     computerScoreH4.innerText = computerTotal;
+
+//     playerScoreDiv.appendChild(playerScoreH4);
+//     computerScoreDiv.appendChild(computerScoreH4);
+// }
+
+
+//visual cue for computer move (floats the rock sign objects up and down)
+function rockHover(rock,paper,scissors) {
+
+    const root = document.documentElement;
+
+    if (rock == true) {
+        root.style.setProperty('--rock-object-float', 160 + "vh");
+        console.log(rock,paper,scissors)
+    }else if (paper == true) {
+        root.style.setProperty('--paper-object-float', 160 + "vh");
+        console.log(rock,paper,scissors)
+    }else if (scissors == true) {
+        root.style.setProperty('--scissors-object-float', 160 + "vh");
+        console.log(rock,paper,scissors)
+    }else{
+        root.style.setProperty('--rock-object-float', 200 + "vh");
+        root.style.setProperty('--paper-object-float', 200 + "vh");
+        root.style.setProperty('--scissors-object-float', 200 + "vh");
+        console.log(rock,paper,scissors)
+    }
 }
 
 //stops whitespace from forming below parallax images
 window.onscroll = function () { window.scrollTo(0, 0); };
 
-class ScoreCounter {
-    
-    constructor(
-        playerElement,   //html dom element
-        computerElement, //html dom element
-        playerScore,     //int
-        computerScore    //int
-    )
-        {
-            this._playerElement = playerElement;
-            this._computerElement = computerElement;
-            this._playerScore = playerScore;
-            this._computerScore = computerScore;
 
-            const self = this
-            
-
-        }
-
-
-}
 
 //  beware, you're about to enter...
 
@@ -105,6 +126,7 @@ class ScoreCounter {
 
 // begin play when play button is clicked, 
 function beginPlay(){
+    rockHover(false,false,false);
     resetVisibility();
     // hide the play button on click, and give a countdown for player and computer 
     visibilityToggle("play-button"); 
@@ -129,12 +151,18 @@ function beginPlay(){
                             //create a string name out of computer input
                             if (computerSelection === 1 ){
                                 computerSign = 'Rock';
-        
                             }else if (computerSelection === 2 ){
                                 computerSign = 'Paper';
-                                
                             }else if (computerSelection === 3 ) {
                                 computerSign = 'Scissors';
+                        
+                            }
+                            if (computerSelection === 1 ){
+                                rockHover(true,false,false);
+                            }else if (computerSelection === 2 ){
+                                rockHover(false,true,false);
+                            }else if (computerSelection === 3 ) {
+                                rockHover(false,false,true);
                             }
                             console.log("Computer threw: " ,computerSign);
 
@@ -167,16 +195,20 @@ function beginPlay(){
                         if (score == -4 || score == 1||score == -2){
                             console.log('You win! :' + playerSign + ' beats ' + computerSign);
                             resultDisplay('YOU WIN', computerSign + ' beats ' + playerSign);
+                            
                         }else if (score == 2 || score == -1){
                             console.log('You lose... :' + computerSign + ' beats ' + playerSign);
                             resultDisplay('YOU LOSE...' , computerSign + ' beats ' + playerSign);
+                            
                         }else if (score == 0){
                             console.log('Draw :' + computerSign + ' ties ' + playerSign);
                             resultDisplay('DRAW', computerSign + ' ties ' + playerSign);
+                            
                         }
                         setTimeout(()=>{
                             resetVisibility();  //reset game
-                            clearTimeout();    
+                            clearTimeout(); 
+                            
                         },1000)
                     },800) //play button reappears
                 },500) // play begins, time limit for player choice
