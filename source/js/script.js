@@ -72,21 +72,38 @@ function resultDisplay (displayedResult,explainedResult) {
 
 
 
-// function scoreCounter (playerCount,computerCount) {
+function scoreCounter (playerCount,computerCount) {
     
+    
+    const playerScoreH4 = document.getElementsByClassName('player-score')[0];
+    const computerScoreH4 = document.getElementsByClassName('computer-score')[0];
 
-//     const playerScoreDiv = document.getElementsByClassName('player-score')[0];
-//     const computerScoreDiv = document.getElementsByClassName('computer-score')[0];
+    let playerTotal = +playerScoreH4.innerText;
+    let computerTotal = +computerScoreH4.innerText;
 
-//     const playerScoreH4 = document.createElement('h4');
-//     const computerScoreH4 = document.createElement('h4');
+    playerScoreH4.innerText = +playerTotal + +playerCount;
+    computerScoreH4.innerText = +computerTotal + +computerCount;
 
-//     playerScoreH4.innerText = playerTotal;
-//     computerScoreH4.innerText = computerTotal;
-
-//     playerScoreDiv.appendChild(playerScoreH4);
-//     computerScoreDiv.appendChild(computerScoreH4);
-// }
+    if (playerScoreH4.innerText == 5 && computerScoreH4.innerText == 5) {
+        resultDisplay ('ROUND DRAW','play again');
+        resetVisibility();
+        clearTimeout();
+        playerScoreH4.innerText = 0;
+        computerScoreH4.innerText = 0;
+    }else if (playerScoreH4.innerText == 5) {
+        resultDisplay ('ROUND WIN',"victory");
+        resetVisibility();
+        clearTimeout();
+        playerScoreH4.innerText = 0;
+        computerScoreH4.innerText = 0;
+    }else if (computerScoreH4.innerText == 5) {
+        resultDisplay ('ROUND LOST','');
+        resetVisibility();
+        clearTimeout();
+        playerScoreH4.innerText = 0;
+        computerScoreH4.innerText = 0;
+    }
+}
 
 
 //visual cue for computer move (floats the rock sign objects up and down)
@@ -96,7 +113,7 @@ function rockHover(rock,paper,scissors) {
 
     if (rock == true) {
         root.style.setProperty('--rock-object-float', 160 + "vh");
-        console.log(rock,paper,scissors)
+
     }else if (paper == true) {
         root.style.setProperty('--paper-object-float', 160 + "vh");
         console.log(rock,paper,scissors)
@@ -108,6 +125,13 @@ function rockHover(rock,paper,scissors) {
         root.style.setProperty('--paper-object-float', 200 + "vh");
         root.style.setProperty('--scissors-object-float', 200 + "vh");
         console.log(rock,paper,scissors)
+    }
+
+    //  reset rock position after 5 seconds of inactivity
+    if (rock || paper || scissors === true) {
+        setTimeout(()=>{
+            rockHover(false,false,false)
+        },5000)
     }
 }
 
@@ -172,7 +196,7 @@ function beginPlay(){
                             //create a string name out of player input
                             if (playerSelection === 1 ){
                                 playerSign = 'Rock';
-                            
+                                
                             }else if (playerSelection === 2 ){
                                 playerSign = 'Paper';
                                 
@@ -181,6 +205,7 @@ function beginPlay(){
                             }else if (playerSelection  === false) {
                                 console.log('You lose','hesitation is defeat');
                                 resultDisplay('YOU LOSE', 'hesitation is defeat');
+                                scoreCounter (0,1);
                                 resetVisibility();
                                 clearTimeout();
                                 return;
@@ -195,23 +220,25 @@ function beginPlay(){
                         if (score == -4 || score == 1||score == -2){
                             console.log('You win! :' + playerSign + ' beats ' + computerSign);
                             resultDisplay('YOU WIN', computerSign + ' beats ' + playerSign);
+                            scoreCounter (1,0);
                             
                         }else if (score == 2 || score == -1){
                             console.log('You lose... :' + computerSign + ' beats ' + playerSign);
                             resultDisplay('YOU LOSE...' , computerSign + ' beats ' + playerSign);
-                            
+                            scoreCounter (0,1);
+
                         }else if (score == 0){
                             console.log('Draw :' + computerSign + ' ties ' + playerSign);
                             resultDisplay('DRAW', computerSign + ' ties ' + playerSign);
-                            
+                            scoreCounter (1,1);
                         }
                         setTimeout(()=>{
                             resetVisibility();  //reset game
                             clearTimeout(); 
                             
-                        },1000)
+                        },3000)
                     },800) //play button reappears
-                },500) // play begins, time limit for player choice
+                },1200) // play begins, time limit for player choice
             },800) //BEAU!, player choice appears
         },800) //SHAM
     },200) //RO

@@ -142,15 +142,15 @@ body{
 }
 .rock {
     transform: translateZ(-5px) scale(1.0) translateY(var(--rock-object-float)) translateX(-115px);
-    transition: transform 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
+    transition: transform 2s cubic-bezier(0.47, 0.02, 0.53, 0.96);
 }
 .paper {
     transform: translateZ(-5px) scale(1.0) translateY(var(--paper-object-float)) translateX(117px);
-    transition: transform 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
+    transition: transform 2s cubic-bezier(0.47, 0.02, 0.53, 0.96);
 }
 .scissors {
     transform: translateZ(-5px) scale(1.0) translateY(var(--scissors-object-float)) translateX(384px);
-    transition: transform 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
+    transition: transform 2s cubic-bezier(0.47, 0.02, 0.53, 0.96);
 }
 .foreground {
     transform: translateZ(-4px) scale(1.0) translateY(205vh);
@@ -262,6 +262,10 @@ body{
     flex-direction:column;
     align-items:center;
     margin: 0;
+    font-family: 'Dosis', sans-serif;
+    font-size: 30px;
+    font-weight: 100;
+    color: var(--text-color);
 }
 .player-score {
     position:fixed;
@@ -269,6 +273,10 @@ body{
     display:flex;
     align-items:center;
     flex-direction:column;
+    font-family: 'Dosis', sans-serif;
+    font-size: 30px;
+    font-weight: 100;
+    color: var(--text-color);
 }
 
 
