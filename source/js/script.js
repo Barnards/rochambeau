@@ -219,7 +219,7 @@ function beginPlay(){
                         //calculate the winner and explain decision
                         if (score == -4 || score == 1||score == -2){
                             console.log('You win! :' + playerSign + ' beats ' + computerSign);
-                            resultDisplay('YOU WIN', computerSign + ' beats ' + playerSign);
+                            resultDisplay('YOU WIN', playerSign + ' beats ' + computerSign);
                             scoreCounter (1,0);
                             
                         }else if (score == 2 || score == -1){

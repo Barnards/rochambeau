@@ -210,6 +210,11 @@ body{
     z-index:-1;
 }
 
+@supports (-moz-appearance:none) {
+    .player-area {
+         margin:-150px; } 
+}
+
 .play-button{
     width:120px;
     height:120px;
