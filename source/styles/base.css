@@ -104,6 +104,7 @@ body{
     max-height:200vh;
     overflow-y:auto;
     overflow-x: hidden;
+    scroll-behavior: smooth;
     perspective: 10px;
     margin-bottom: 0px ;
 
@@ -111,6 +112,12 @@ body{
 
 }
 
+
+/*//////////////////////////////////////////////////////////////////////////////
+/////////////////////////                              /////////////////////////
+///////////////////////// -----  Parallax vis   -----  /////////////////////////
+/////////////////////////                              /////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
 .visuals {
     position: relative;
     display: flex;
@@ -185,6 +192,12 @@ body{
     justify-self: center;
 }
 
+/*//////////////////////////////////////////////////////////////////////////////
+/////////////////////////                              /////////////////////////
+/////////////////////////      -----  HUD   -----      /////////////////////////
+/////////////////////////                              /////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
+
 .result {
     transform: translateZ(-3px) scale(1.3) translateY(108vh);
     transform-style: preserve-3d;
@@ -203,26 +216,124 @@ body{
     flex-direction: column;
     align-content: center;
     align-items: center;
-    margin:20px;
+    margin:-10px;
     max-width: 400px;
     max-height:400px;
     transform-style: preserve-3d;
     z-index:-1;
 }
 
+
+
 @supports (-moz-appearance:none) {
     .player-area {
-         margin:-150px; } 
+         margin:-50px; } 
 }
 
 .play-button{
-    width:120px;
-    height:120px;
+    width: 42px;
+    height: 42px;
+    position: absolute;
+    visibility: visible;
+    top: 41.5%;
+    left: 41.5%;
+    z-index: 3;
+    border: none;
+    transform-origin: center;
+    animation: none;
+}
+
+.play-button:hover ~ .solar-system{
+    transform: scale(0);
+    
+}
+
+/*//////////////////////////////////////////////////////////////////////////////
+/////////////////////////                              /////////////////////////
+///////////////////////// -----  SOLAR SYSTEM   -----  /////////////////////////
+/////////////////////////                              /////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
+
+/* credit to https://codepen.io/AlexWarnes for this one */ 
+
+
+@keyframes spin {
+    from {
+      transform: rotate(0);
+    }
+    to{
+      transform: rotate(359deg);
+    }
+  }
+
+.spinner-box {
+    width:250px;
+    height:250px;
     position: absolute;
     visibility: visible;
     top: 20%;
     z-index: 2;
+    transform-origin: center;
+    
+
 }
+
+.solar-system {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:0.5s cubic-bezier(0.44,-0.33, 0.71, 0.99)all;
+  }
+  
+  .orbit {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #fafbfC;
+      border-radius: 50%;
+  } 
+  
+  .earth-orbit {
+      width: 165px;
+      height: 165px;
+    -webkit-animation: spin 24s linear 0s infinite;
+    opacity: 50%;
+  }
+  
+  .venus-orbit {
+      width: 120px;
+      height: 120px;
+    -webkit-animation: spin 14.8s linear 0s infinite;
+  }
+  
+  .mercury-orbit {
+      width: 90px;
+      height: 90px;
+    -webkit-animation: spin 9s linear 0s infinite;
+    
+  }
+  
+  .planet {
+      position: absolute;
+      top: -5px;
+    width: 10px;
+    height: 10px;
+      border-radius: 50%;
+    background-color: var(--primary-color);
+  }
+
+
+
+
+
+/*//////////////////////////////////////////////////////////////////////////////
+/////////////////////////                              /////////////////////////
+/////////////////////////      -----  HUD   -----      /////////////////////////
+/////////////////////////                              /////////////////////////
+//////////////////////////////////////////////////////////////////////////////*/
 
 @keyframes countAnimate{
     0% {
@@ -284,7 +395,25 @@ body{
     color: var(--text-color);
 }
 
+.computer-score-label {
+    position:fixed;
+    color: var(--primary-color);
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight:100;
+    top:99%;
+    left:-14%;
+}
 
+.player-score-label {
+    position:fixed;
+    color: var(--primary-color);
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight:100;
+    top:99%;
+    left:106%;
+}
 
 @keyframes glow {
     0% {

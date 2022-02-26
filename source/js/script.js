@@ -33,6 +33,7 @@ function getKey(playerSelection) {
 function resetVisibility() {
     document.getElementsByClassName('player-choice')[0].style.visibility = 'hidden';
     document.getElementsByClassName('play-button')[0].style.visibility ='visible';
+    document.getElementsByClassName('spinner-box')[0].style.visibility ='visible';
 }
 
 
@@ -135,9 +136,13 @@ function rockHover(rock,paper,scissors) {
     }
 }
 
-//stops whitespace from forming below parallax images
-window.onscroll = function () { window.scrollTo(0, 0); };
+//stops whitespace from forming below parallax images. 
 
+if (navigator.userAgent.search("Firefox") >= 0) {
+    window.onscroll = function () { window.scrollTo(0, 90); };
+} else { 
+    window.onscroll = function () { window.scrollTo(0, 0); };  
+}
 
 
 //  beware, you're about to enter...
@@ -154,6 +159,7 @@ function beginPlay(){
     resetVisibility();
     // hide the play button on click, and give a countdown for player and computer 
     visibilityToggle("play-button"); 
+    visibilityToggle("spinner-box");
     playerSelection = false;  // if the player fails to select
     setTimeout(() => {
         console.log('2');
