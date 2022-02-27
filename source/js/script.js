@@ -34,6 +34,12 @@ function resetVisibility() {
     document.getElementsByClassName('player-choice')[0].style.visibility = 'hidden';
     document.getElementsByClassName('play-button')[0].style.visibility ='visible';
     document.getElementsByClassName('spinner-box')[0].style.visibility ='visible';
+    document.getElementsByClassName('ellipse1')[0].style.visibility ='hidden';
+    document.getElementsByClassName('ellipse1')[0].style.animationName ='none';
+    document.getElementsByClassName('ellipse2')[0].style.visibility ='hidden';
+    document.getElementsByClassName('ellipse2')[0].style.animationName ='none';
+    document.getElementsByClassName('ellipse3')[0].style.visibility ='hidden';
+    document.getElementsByClassName('ellipse3')[0].style.animationName ='none';
 }
 
 
@@ -145,6 +151,8 @@ if (navigator.userAgent.search("Firefox") >= 0) {
 }
 
 
+
+
 //  beware, you're about to enter...
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -160,7 +168,14 @@ function beginPlay(){
     // hide the play button on click, and give a countdown for player and computer 
     visibilityToggle("play-button"); 
     visibilityToggle("spinner-box");
-    playerSelection = false;  // if the player fails to select
+    visibilityToggle("ellipse1");
+    document.getElementsByClassName('ellipse1')[0].style.animationName ='ellipse1';
+    visibilityToggle("ellipse2");
+    document.getElementsByClassName('ellipse2')[0].style.animationName ='ellipse2';
+    visibilityToggle("ellipse3");
+    document.getElementsByClassName('ellipse3')[0].style.animationName ='ellipse3';
+    playerSelection = false;
+      // if the player fails to select
     setTimeout(() => {
         console.log('2');
         countDown('RO');
@@ -170,10 +185,17 @@ function beginPlay(){
             setTimeout(() => {
                 console.log('throw!')
                 countDown('BEAU');
-                visibilityToggle("player-choice");   // display buttons
+                visibilityToggle("player-choice"); // display buttons
                 setTimeout(() => { 
-                    visibilityToggle("player-choice");  //remove buttons 
+                    visibilityToggle("player-choice"); 
+                    document.getElementsByClassName('ellipse1')[0].style.visibility ='hidden';
+                    document.getElementsByClassName('ellipse1')[0].style.animationName ='none';
+                    document.getElementsByClassName('ellipse2')[0].style.visibility ='hidden';
+                    document.getElementsByClassName('ellipse2')[0].style.animationName ='none';
+                    document.getElementsByClassName('ellipse3')[0].style.visibility ='hidden';
+                    document.getElementsByClassName('ellipse3')[0].style.animationName ='none'; //remove buttons 
                     setTimeout(()=>{
+                        
                         //generate computer input
                         const computerSelection = Math.floor(Math.random() * (4 - 1) + 1);
                         // console.log(computerSelection);
