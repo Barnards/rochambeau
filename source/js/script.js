@@ -123,15 +123,15 @@ function rockHover(rock,paper,scissors) {
 
     }else if (paper == true) {
         root.style.setProperty('--paper-object-float', 160 + "vh");
-        console.log(rock,paper,scissors)
+        
     }else if (scissors == true) {
         root.style.setProperty('--scissors-object-float', 160 + "vh");
-        console.log(rock,paper,scissors)
+        
     }else{
         root.style.setProperty('--rock-object-float', 200 + "vh");
         root.style.setProperty('--paper-object-float', 200 + "vh");
         root.style.setProperty('--scissors-object-float', 200 + "vh");
-        console.log(rock,paper,scissors)
+        
     }
 
     //  reset rock position after 5 seconds of inactivity
@@ -150,6 +150,34 @@ if (navigator.userAgent.search("Firefox") >= 0) {
     window.onscroll = function () { window.scrollTo(0, 0); };  
 }
 
+//displays player's choice as a magic symbol
+function playerMagic(rock,paper,scissors) {
+
+    const root = document.documentElement;
+
+    if (rock == true) {
+        root.style.setProperty('--rock-magic-visible',1);
+
+    }else if (paper == true) {
+        root.style.setProperty('--paper-magic-visible',1);
+        console.log(rock,paper,scissors)
+    }else if (scissors == true) {
+        root.style.setProperty('--scissors-magic-visible',1);
+        console.log(rock,paper,scissors)
+    }else{
+        root.style.setProperty('--rock-magic-visible',0);
+        root.style.setProperty('--paper-magic-visible',0);
+        root.style.setProperty('--scissors-magic-visible',0);
+        console.log(rock,paper,scissors)
+    }
+
+    //  reset magic visibility after 5 seconds of inactivity
+    if (rock || paper || scissors === true) {
+        setTimeout(()=>{
+            playerMagic(false,false,false)
+        },5000)
+    }
+}
 
 
 
@@ -163,19 +191,18 @@ if (navigator.userAgent.search("Firefox") >= 0) {
 
 // begin play when play button is clicked, 
 function beginPlay(){
-    rockHover(false,false,false);
+    rockHover(false,false,false);  
+    playerMagic(false,false,false); 
     resetVisibility();
-    // hide the play button on click, and give a countdown for player and computer 
-    visibilityToggle("play-button"); 
-    visibilityToggle("spinner-box");
-    visibilityToggle("ellipse1");
+    visibilityToggle("play-button"); //hide play button
+    visibilityToggle("spinner-box"); //hide spinner box
+    visibilityToggle("ellipse1");    
     document.getElementsByClassName('ellipse1')[0].style.animationName ='ellipse1';
     visibilityToggle("ellipse2");
     document.getElementsByClassName('ellipse2')[0].style.animationName ='ellipse2';
     visibilityToggle("ellipse3");
     document.getElementsByClassName('ellipse3')[0].style.animationName ='ellipse3';
-    playerSelection = false;
-      // if the player fails to select
+    playerSelection = false;  // if the player fails to select
     setTimeout(() => {
         console.log('2');
         countDown('RO');
@@ -209,6 +236,7 @@ function beginPlay(){
                                 computerSign = 'Scissors';
                         
                             }
+                            //(floats the rock sign objects up and down)
                             if (computerSelection === 1 ){
                                 rockHover(true,false,false);
                             }else if (computerSelection === 2 ){
@@ -224,10 +252,8 @@ function beginPlay(){
                             //create a string name out of player input
                             if (playerSelection === 1 ){
                                 playerSign = 'Rock';
-                                
                             }else if (playerSelection === 2 ){
                                 playerSign = 'Paper';
-                                
                             }else if (playerSelection === 3 ) {
                                 playerSign = 'Scissors';
                             }else if (playerSelection  === false) {
@@ -237,6 +263,14 @@ function beginPlay(){
                                 resetVisibility();
                                 clearTimeout();
                                 return;
+                            }
+                            //displays player's choice as a magic symbol
+                            if (playerSelection === 1 ){
+                                playerMagic(true,false,false);
+                            }else if (playerSelection === 2 ){
+                                playerMagic(false,true,false);
+                            }else if (playerSelection === 3 ) {
+                                playerMagic(false,false,true);
                             }
 
                             console.log("you threw: " ,playerSign);
@@ -248,13 +282,11 @@ function beginPlay(){
                         if (score == -4 || score == 1||score == -2){
                             console.log('You win! :' + playerSign + ' beats ' + computerSign);
                             resultDisplay('YOU WIN', playerSign + ' beats ' + computerSign);
-                            scoreCounter (1,0);
-                            
+                            scoreCounter (1,0);  
                         }else if (score == 2 || score == -1){
                             console.log('You lose... :' + computerSign + ' beats ' + playerSign);
                             resultDisplay('YOU LOSE...' , computerSign + ' beats ' + playerSign);
                             scoreCounter (0,1);
-
                         }else if (score == 0){
                             console.log('Draw :' + computerSign + ' ties ' + playerSign);
                             resultDisplay('DRAW', computerSign + ' ties ' + playerSign);
@@ -262,8 +294,7 @@ function beginPlay(){
                         }
                         setTimeout(()=>{
                             resetVisibility();  //reset game
-                            clearTimeout(); 
-                            
+                            clearTimeout();    
                         },3000)
                     },800) //play button reappears
                 },1200) // play begins, time limit for player choice

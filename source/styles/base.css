@@ -13,6 +13,11 @@
     --rock-object-float: 200vh;
     --paper-object-float: 200vh;
     --scissors-object-float: 200vh;
+
+    --rock-magic-visible: 0;
+    --paper-magic-visible: 0;
+    --scissors-magic-visible: 0;
+
 }
     
 
@@ -298,6 +303,7 @@ body{
     border: none;
     background-color: var(--primary-color);
     border-radius:50%;
+    
 }
 
 .ellipse1 {
@@ -315,6 +321,7 @@ body{
 /////////////////////////                              /////////////////////////
 //////////////////////////////////////////////////////////////////////////////*/
 
+
 .player-sign-image {
     display: flex;
     width: 70px;
@@ -324,10 +331,12 @@ body{
     top: 41.5%;
     left: 97%;
     z-index: 4;
+    opacity: calc(var(--rock-magic-visible) + var(--paper-magic-visible)+ var(--scissors-magic-visible));
     transform-origin: center;
     align-content: center;
     align-items: center;
     justify-content: center;
+    transition:0.5s cubic-bezier(0.44,-0.33, 0.71, 0.99)all;
 }
 
 .rock-sign,
@@ -337,9 +346,19 @@ body{
     border-radius:50%;
     width:50px;
     height:50px;
-    filter:invert(46%) sepia(80%) saturate(50%) hue-rotate( 130deg) brightness(120%) contrast(400%);
     box-shadow: 0 0 5px #004937, 0 0 25px #003d2e,
-     0 0 50px #000000, 0 0 30px #006c51 inset
+     0 0 50px #000000, 0 0 30px #006c51 inset;
+    filter:invert(46%) sepia(80%) saturate(70%) hue-rotate( 130deg) brightness(120%) contrast(400%);
+    transition:1s cubic-bezier(0.44,-0.33, 0.71, 0.99)all;
+}
+.rock-sign{
+    opacity:var(--rock-magic-visible);
+}
+.paper-sign{
+    opacity:var(--paper-magic-visible);
+}
+.scissors-sign{
+    opacity:var(--scissors-magic-visible);
 }
 
 /*//////////////////////////////////////////////////////////////////////////////
@@ -444,6 +463,7 @@ body{
 
 .countdown > h2 {
     animation: 0.1s cubic-bezier(0, 0.95, 0.18, 0.99) 0s 1 countAnimate;
+    
 }
 
 
