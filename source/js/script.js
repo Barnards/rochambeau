@@ -1,4 +1,43 @@
 
+
+
+// let options = {
+//     rootMargin: '-10%',
+//     threshold: 0.0
+// }
+
+// let observer = new IntersectionObserver(showItem, options);
+
+
+const rpsTitle = document.getElementsByClassName('rockpaperscissors-title')[0];
+const rpsSymbols = document.getElementsByClassName('rps-symbols-title')[0];
+const rochambeauTitle = document.getElementsByClassName('rochambeau-title')[0];
+console.log(rpsTitle);
+
+window.onload = function(){
+    setTimeout(()=>{
+        rpsTitle.classList.remove('active')
+        setTimeout(()=>{
+            rpsSymbols.classList.add('active')
+            setTimeout(()=>{
+                rpsSymbols.classList.remove('active')
+                setTimeout(()=>{
+                    rochambeauTitle.classList.add('active')
+                },200)
+            },500)
+        },200)
+    },500);
+}
+
+// function showItem(background, rpsSymbols){
+//         if(background.isIntersecting){
+//             rpsSymbols.classList.add('active');
+//         }
+
+// }
+
+
+
 // switch button visibility to the opposite of its current state
 function visibilityToggle(
     targetDiv   // String
@@ -181,6 +220,7 @@ function playerMagic(rock,paper,scissors) {
 
 
 
+
 //  beware, you're about to enter...
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -214,13 +254,13 @@ function beginPlay(){
                 countDown('BEAU');
                 visibilityToggle("player-choice"); // display buttons
                 setTimeout(() => { 
-                    visibilityToggle("player-choice"); 
+                    visibilityToggle("player-choice"); //remove buttons after 1.2sec
                     document.getElementsByClassName('ellipse1')[0].style.visibility ='hidden';
                     document.getElementsByClassName('ellipse1')[0].style.animationName ='none';
                     document.getElementsByClassName('ellipse2')[0].style.visibility ='hidden';
                     document.getElementsByClassName('ellipse2')[0].style.animationName ='none';
                     document.getElementsByClassName('ellipse3')[0].style.visibility ='hidden';
-                    document.getElementsByClassName('ellipse3')[0].style.animationName ='none'; //remove buttons 
+                    document.getElementsByClassName('ellipse3')[0].style.animationName ='none'; 
                     setTimeout(()=>{
                         
                         //generate computer input
