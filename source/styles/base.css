@@ -168,6 +168,52 @@ h1{
     transition: 2s cubic-bezier(0.47, 0.02, 0.53, 0.96);
 }
 
+.scroll {
+    padding-top: 70px;
+    top:0px;
+    position:absolute;
+  }
+  .scroll span {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    border-left: 1px solid var(--text-color);
+    border-bottom: 1px solid var(--text-color);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-animation: scrollTwerk 1.5s infinite;
+    animation: scrollTwerk 1.5s infinite;
+    box-sizing: border-box;
+  }
+  @-webkit-keyframes scrollTwerk {
+    0% {
+      -webkit-transform: rotate(-45deg) translate(0, 0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+      opacity: 0;
+    }
+  }
+  @keyframes scrollTwerk {
+    0% {
+      transform: rotate(-45deg) translate(0, 0);
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(-45deg) translate(-20px, 20px);
+      opacity: 0;
+    }
+  }
 /*//////////////////////////////////////////////////////////////////////////////
 /////////////////////////                              /////////////////////////
 ///////////////////////// -----  Parallax vis   -----  /////////////////////////
