@@ -150,7 +150,7 @@ h1{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     opacity:0;
-    transform: translateY(30px);
+    transform: translateY(-30px);
     transition: 2s cubic-bezier(0.47, 0.02, 0.53, 0.96);
 }
 .rps-symbols-title{
