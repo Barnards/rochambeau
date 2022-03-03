@@ -12,18 +12,13 @@
     <link rel="icon" href= >
     <script src="/source/js/script.js"></script>
 </head>
-<body>
+<body >
     <div class = "header">
         <h1 class="rochambeau-title">ROCHAMBEAU</h1>
         <h1 class="rockpaperscissors-title active">ROCK PAPER SCISSORS</h1>
-        <div class="rps-symbols-title">
-            <img src = "/images/circle.svg" width="20" height="20">
-            <img src = "/images/rectangle.svg" width="20" height="20">
-            <img src = "/images/x.svg" width="30" height="30">
-        </div>
-        <div class = 'scroll'><span></span><h5>Scroll</h5></div>
+        <div class = 'scroll active'><span></span><h5>Scroll</h5></div>
     </div>
-    <div class = "wrapper">
+    <div class = "wrapper" onscroll="hideOnScroll()">
         <div class = "visuals">
             <img src = "/images/Planet-2.png" class = "planet-2">
             <img src = "/images/Planet-1.png" class = "planet-1">

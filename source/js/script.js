@@ -1,41 +1,37 @@
 
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////                              /////////////////////////
+///////////////////////// -----     Welcome     -----  /////////////////////////
+/////////////////////////                              /////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+// Michael, AKA @Alchemi's Rock paper Scissors game
+
+// works best on chrome and edge
+// firefox a bit strange on subsequent page refreshes but otherwise ok
+// safari doesn't display result text but otherwise fine
 
 
-// let options = {
-//     rootMargin: '-10%',
-//     threshold: 0.0
-// }
 
-// let observer = new IntersectionObserver(showItem, options);
-
-
-const rpsTitle = document.getElementsByClassName('rockpaperscissors-title')[0];
-const rpsSymbols = document.getElementsByClassName('rps-symbols-title')[0];
-const rochambeauTitle = document.getElementsByClassName('rochambeau-title')[0];
-console.log(rpsTitle);
-
-window.onload = function(){
-    setTimeout(()=>{
-        rpsTitle.classList.remove('active')
+// Function to change titles on scroll
+function titleCycle(){
+    const title1 = document.getElementsByClassName('rockpaperscissors-title')[0];
+    title1.classList.remove('active') 
         setTimeout(()=>{
-            rpsSymbols.classList.add('active')
-            setTimeout(()=>{
-                rpsSymbols.classList.remove('active')
-                setTimeout(()=>{
-                    rochambeauTitle.classList.add('active')
-                },200)
-            },500)
-        },200)
-    },500);
+            const rochambeauTitle = document.getElementsByClassName('rochambeau-title')[0];
+            rochambeauTitle.classList.add('active')
+        },1500)
 }
 
-// function showItem(background, rpsSymbols){
-//         if(background.isIntersecting){
-//             rpsSymbols.classList.add('active');
-//         }
-
-// }
-
+// hadnler for events as soon as the user scrolls
+function hideOnScroll() {
+    if (document.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementsByClassName('scroll')[0].classList.add('active');
+    } else {
+        document.getElementsByClassName('scroll')[0].classList.remove('active');
+        titleCycle();
+    }
+}
 
 
 // switch button visibility to the opposite of its current state
@@ -57,7 +53,7 @@ function getSelected(number){
      playerSelection = number;
 }
 
-// get player choice from keyboard
+// get player choice from keyboard..feature debug in progress (not implemented)
 function getKey(playerSelection) {
     document.addEventListener('keydown', (event) => {
         playerSelection = event.key;
@@ -68,7 +64,7 @@ function getKey(playerSelection) {
     })
 }
 
-// resets button visibility when game is over
+// resets button and decor visibility when game is over
 function resetVisibility() {
     document.getElementsByClassName('player-choice')[0].style.visibility = 'hidden';
     document.getElementsByClassName('play-button')[0].style.visibility ='visible';
@@ -80,7 +76,6 @@ function resetVisibility() {
     document.getElementsByClassName('ellipse3')[0].style.visibility ='hidden';
     document.getElementsByClassName('ellipse3')[0].style.animationName ='none';
 }
-
 
 //creates a visual countdown for game start, placed underneath play button
 function countDown (currentCount) {
@@ -117,7 +112,7 @@ function resultDisplay (displayedResult,explainedResult) {
 }
 
 
-
+// score tally
 function scoreCounter (playerCount,computerCount) {
     
     
@@ -181,13 +176,15 @@ function rockHover(rock,paper,scissors) {
     }
 }
 
-//stops whitespace from forming below parallax images. 
-
+//stops whitespace from forming below parallax images
+//only fix i could find for the translateZ margin the images created at the bottom
 if (navigator.userAgent.search("Firefox") >= 0) {
-    window.onscroll = function () { window.scrollTo(0, 90); };
+    const wrapper = document.getElementsByClassName('wrapper')[0];
+    window.onscroll = function () { wrapper.scrollTo(0, 90); };
 } else { 
     window.onscroll = function () { window.scrollTo(0, 0); };  
 }
+
 
 //displays player's choice as a magic symbol
 function playerMagic(rock,paper,scissors) {
@@ -265,7 +262,6 @@ function beginPlay(){
                         
                         //generate computer input
                         const computerSelection = Math.floor(Math.random() * (4 - 1) + 1);
-                        // console.log(computerSelection);
                         
                             //create a string name out of computer input
                             if (computerSelection === 1 ){
@@ -274,7 +270,6 @@ function beginPlay(){
                                 computerSign = 'Paper';
                             }else if (computerSelection === 3 ) {
                                 computerSign = 'Scissors';
-                        
                             }
                             //(floats the rock sign objects up and down)
                             if (computerSelection === 1 ){

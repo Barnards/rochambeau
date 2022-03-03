@@ -1,20 +1,62 @@
 "use strict";
 
-//display context change menu
+//a place for experimentation
 
-//Display 'Play' Button
-//begin 3 second countdown on "play press"
-//count 1-3 while computer animation plays ro-sham-bo
+// let options = {
+// //     rootMargin: '-10%',
+// //     threshold: 0.0
+// // }
 
-//computerSelection
-
-// let changeClass = 'hidden';
-
-// document.getElementById("play-button").addEventListener( 'click', changeClass);
+// // let observer = new IntersectionObserver(showItem, options);
 
 
+// // const rpsTitle = document.getElementsByClassName('rockpaperscissors-title')[0];
+// // const rpsSymbols = document.getElementsByClassName('rps-symbols-title')[0];
+// // const rochambeauTitle = document.getElementsByClassName('rochambeau-title')[0];
+// // console.log(rpsTitle);
 
-//game calculator
+// // window.onload = function(){
+// //     setTimeout(()=>{
+// //         rpsTitle.classList.remove('active')
+// //         setTimeout(()=>{
+// //             rpsSymbols.classList.add('active')
+// //             setTimeout(()=>{
+// //                 rpsSymbols.classList.remove('active')
+// //                 setTimeout(()=>{
+// //                     rochambeauTitle.classList.add('active')
+// //                 },200)
+// //             },500)
+// //         },200)
+// //     },500);
+// // }
+
+// const scrollY = window.pageYOffset;
+
+// // what should we do when scrolling occurs
+// // function hideOnScroll() {
+// //     const scroll = document.getElementsByClassName('scroll')[0];
+// //     scroll.classList.remove('active');
+// // };
+// // const entity = document.getElementsByClassName('visuals')[0];
+
+// // entity.onscroll = function(){console.log('yas')};
+
+// // window.onload = function(){
+// //     entity.addEventListener('scroll', () => {
+// //         console.log('yas')
+// //         hideOnScroll();
+// //     })
+// // }
+// const wrapper = document.getElementsByClassName('wrapper')[0];
+// wrapper.onscroll = function() {hideOnScroll()};
+
+// function hideOnScroll() {
+//   if (wrapper.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+//     document.getElementsByClassName('scroll')[0].remove('active');
+//   } else {
+//     document.getElementsByClassName('scroll')[0].add('active');
+//   }
+// }
 
 
 
