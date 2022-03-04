@@ -393,13 +393,13 @@ box-sizing: border-box;
     }
     
 }
-@media screen and (max-width: 2000px){
+@media screen and (max-width: 1900px){
     @supports (-moz-appearance:none) {
         .wrapper {
              margin:-90px; } 
     }
     .player-area{
-        margin:-132px;
+        margin:-70px;
     }
     @supports (-moz-appearance:none) {
         .player-area {
