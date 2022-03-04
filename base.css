@@ -341,13 +341,13 @@ box-sizing: border-box;
 
 }
 
-@media screen and (max-width: 2560px){
+@media screen and (max-width: 2500px){
     @supports (-moz-appearance:none) {
         .wrapper {
-             margin:-170px; } 
+             margin:-85px; } 
     }
     .player-area{
-        margin:-60px;
+        margin:-40px;
     }
     @supports (-moz-appearance:none) {
         .player-area {
