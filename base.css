@@ -801,7 +801,7 @@ button:hover {
 }
 
 .choice-rock:hover{
-    background-image: url(/images/circle.svg);
+    background-image: url(circle.svg);
     background-size: 30px;
     background-position: center; 
     background-repeat: no-repeat;
@@ -811,7 +811,7 @@ button:hover {
 }
 
 .choice-paper:hover{
-    background-image: url(/images/rectangle.svg);
+    background-image: url(rectangle.svg);
     background-size: 30px;
     background-position: center; 
     background-repeat: no-repeat;
@@ -820,7 +820,7 @@ button:hover {
         130deg) brightness(150%) contrast(400%);
 }
 .choice-scissors:hover{
-    background-image: url(/images/x.svg);
+    background-image: url(x.svg);
     background-size: 40px;
     background-position: center; 
     background-repeat: no-repeat;
