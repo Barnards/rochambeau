@@ -399,7 +399,7 @@ box-sizing: border-box;
              margin:-90px; } 
     }
     .player-area{
-        margin:-30px;
+        margin:-104px;
     }
     @supports (-moz-appearance:none) {
         .player-area {
