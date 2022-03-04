@@ -351,7 +351,7 @@ box-sizing: border-box;
     }
     @supports (-moz-appearance:none) {
         .player-area {
-             margin:-220px; } 
+             margin:-80px; } 
     }
     .computer-score {
         left:-20%;
