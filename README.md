@@ -19,7 +19,7 @@ DESKTOP
 Use chrome for best experience, but Edge, Safari and Firefox still run quite well. 
 Coded for 1920x1080 res, but roughly tweaked for 2560
     
-    Safari has a funny font and filter variance
+    Safari has a cool filter variance
     Firefox doesnt return to top of page when refreshed, only when initially loaded
     Edge actually looks fine
     Havent tested on other browsers
