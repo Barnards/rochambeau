@@ -10,6 +10,7 @@ Played against the computer, set in a desert world
 
     I went in blind, without looking at other submissions at
     https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors
+    and actually without looking past the initial mention of the game when it was just meant to be a CLI game.. so I may have deviated a bit from later         instruction, which I'll find out shortly.
     Effort was put into getting timing right in my game, because I felt it to be a key element when playing the game in real life
 
     I knew pretty much nothing about Javascript before this, so it taught me a lot
