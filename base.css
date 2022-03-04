@@ -388,9 +388,12 @@ box-sizing: border-box;
     .header{
         top: 0%;    
     }
+    .player {
+        transform: translateZ(0px) scale(0.8) translateY(235vh)translateX(23px);
+    }
     
 }
-@media screen and (max-width: 1920px){
+@media screen and (max-width: 2000px){
     @supports (-moz-appearance:none) {
         .wrapper {
              margin:-90px; } 
