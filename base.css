@@ -347,7 +347,7 @@ box-sizing: border-box;
              margin:-85px; } 
     }
     .player-area{
-        margin:-40px;
+        margin:-60px;
     }
     @supports (-moz-appearance:none) {
         .player-area {
@@ -399,7 +399,7 @@ box-sizing: border-box;
              margin:-90px; } 
     }
     .player-area{
-        margin:-70px;
+        margin:-60px;
     }
     @supports (-moz-appearance:none) {
         .player-area {
