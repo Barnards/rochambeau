@@ -30,6 +30,7 @@ Coded for 1920x1080 res, but roughly tweaked for 2560
 
 
 MOBILE
+Not recommended on mobile.
 As it stands, mobile styling needs to be tweaked, the margins/positions are off and overflowX needs attention
     
     Will return to address these issues once I've gotten further into the TOP course.
