@@ -20,10 +20,6 @@
 
 }
     
-
-
-
-
 h2 {
     font-family: 'Lato', sans-serif;
     font-size: 40px;
@@ -71,8 +67,6 @@ p {
     color:#000
 }
 
-
-
 body{
     margin: 0px;
     padding: 0px;
@@ -119,9 +113,7 @@ body{
     align-content: center;
     justify-content: center;
     align-items: center;
-    
 }
-
 
 h1{
     position: absolute;
@@ -341,7 +333,7 @@ box-sizing: border-box;
 
 }
 
-@media screen and (max-width: 2500px){
+@media screen and (max-width: 6000px){
     @supports (-moz-appearance:none) {
         .wrapper {
              margin:-85px; } 
