@@ -341,7 +341,7 @@ box-sizing: border-box;
 
 }
 
-@media screen and (max-width: 2500px){
+@media screen and (max-width: 6000px){
     @supports (-moz-appearance:none) {
         .wrapper {
              margin:-85px; } 
