@@ -2,6 +2,8 @@
 
 live: https://barnards.github.io/rochambeau/
 
+Use Chrome on Desktop for best experience
+
 Rock paper scissors, or otherwise known as Rochambeau/ Roshambo
 
 Played against the computer, set in a desert world
@@ -16,11 +18,11 @@ Played against the computer, set in a desert world
 
 
 DESKTOP
-Use chrome for best experience, but Edge, Safari and Firefox still run quite well. 
+, but Edge, Safari and Firefox still run ok.
 Coded for 1920x1080 res, but roughly tweaked for 2560
     
     Safari has a cool filter variance
-    Firefox doesnt return to top of page when refreshed, only when initially loaded
+    Firefox doesnt return to top of page when refreshed, only when initially loaded. Firefox no longer positions bottom player div items properly.
     Edge actually looks fine
     Havent tested on other browsers
 
