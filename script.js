@@ -5,13 +5,73 @@
 /////////////////////////                              /////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-// Michael, AKA @Alchemi's Rock paper Scissors game
+// @Alchemi's Rock paper Scissors game
 
-// works best on chrome and edge
-// firefox a bit strange on subsequent page refreshes but otherwise ok
-// safari doesn't display result text but otherwise fine
+const planet2 = document.getElementsByClassName('planet-2')[0];
+const planet1 = document.getElementsByClassName('planet-1')[0];
+const farBackground = document.getElementsByClassName('far-background')[0];
+const background = document.getElementsByClassName('background')[0];
+const midground = document.getElementsByClassName('midground')[0];
+const scissors = document.getElementsByClassName('scissors')[0];
+const paper = document.getElementsByClassName('paper')[0];
+const rock = document.getElementsByClassName('rock')[0];
+const foreground = document.getElementsByClassName('foreground')[0];
+const player = document.getElementsByClassName('player')[0];
 
+let animationLastConsidered = 0;
 
+function shouldAnimate(time) {
+    if (time <= animationLastConsidered) { return false; }
+    return true;
+}
+
+function setScrollVariable() {
+    const htmlElement = document.documentElement;
+    const heightScrolled = htmlElement.scrollTop /
+    document.documentElement.clientHeight;
+    const percentOfHeightScrolled = heightScrolled * 100
+    return percentOfHeightScrolled
+}
+
+window.addEventListener(
+    'scroll', 
+    () => {
+        hideOnScroll();
+        // console.log(scrollY)
+
+        const scrollAmount = setScrollVariable();
+
+        function slide(element, velocity) {
+            const translateY = scrollAmount * velocity;
+
+            requestAnimationFrame((time)=> {
+                if (!shouldAnimate(time)) { return; }
+                element.style.transform = `translateY(${translateY}px)`;
+                return;
+            })
+
+        }
+
+        slide(planet2, 12.5)
+        slide(planet1, 12)
+        slide(farBackground, 10)
+        slide(background, 8)
+        slide(midground, 6)
+        slide(scissors, 3.5)
+        slide(paper, 3.5)
+        slide(rock, 3.5)
+        slide(foreground, 3)
+        slide(player, 0)
+    }
+);
+
+window.addEventListener(
+    'resize', 
+    () => {
+        setScrollVariable();
+        return;
+    }
+);
 
 // Function to change titles on scroll
 function titleCycle(){
@@ -23,14 +83,10 @@ function titleCycle(){
         },1500)
 }
 
-// hadnler for events as soon as the user scrolls
+// handler for events as soon as the user scrolls
 function hideOnScroll() {
-    if (document.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementsByClassName('scroll')[0].classList.add('active');
-    } else {
-        document.getElementsByClassName('scroll')[0].classList.remove('active');
-        titleCycle();
-    }
+    document.getElementsByClassName('scroll')[0].classList.remove('active');
+    titleCycle();
 }
 
 
@@ -176,14 +232,14 @@ function rockHover(rock,paper,scissors) {
     }
 }
 
-//stops whitespace from forming below parallax images
-//only fix i could find for the translateZ margin the images created at the bottom
-if (navigator.userAgent.search("Firefox") >= 0) {
-    const wrapper = document.getElementsByClassName('wrapper')[0];
-    window.onscroll = function () { wrapper.scrollTo(0, 90); };
-} else { 
-    window.onscroll = function () { window.scrollTo(0, 0); };  
-}
+// //stops whitespace from forming below parallax images
+// //only fix i could find for the translateZ margin the images created at the bottom
+// if (navigator.userAgent.search("Firefox") >= 0) {
+//     const wrapper = document.getElementsByClassName('wrapper')[0];
+//     window.onscroll = function () { wrapper.scrollTo(0, 90); };
+// } else { 
+//     window.onscroll = function () { window.scrollTo(0, 0); };  
+// }
 
 
 //displays player's choice as a magic symbol
