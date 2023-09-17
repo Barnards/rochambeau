@@ -362,7 +362,7 @@ box-sizing: border-box;
         gap: 3vw;
     }
     .rock {
-        transform: translateZ(-5px) scale(1.0) translateY(var(--rock-object-float)) translateX(-115px);
+        transform: translateZ(-5px) scale(1.0)  translateX(-115px);
 
     }
     .paper {
