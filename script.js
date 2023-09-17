@@ -42,7 +42,6 @@ window.addEventListener(
     'scroll', 
     () => {
         hideOnScroll();
-        console.log(scrollY)
 
         const scrollAmount = setScrollVariable();
 
