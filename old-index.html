@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Lato:wght@100&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rochambeau</title>
+    <link href = "base.css" rel = "stylesheet">
+    <link rel="icon" href= "Rochambeau-icon.png">
+    <script src="script.js"></script>
+</head>
+<body >
+    <div class = "header">
+        <h1 class="rochambeau-title">ROCHAMBEAU</h1>
+        <h1 class="rockpaperscissors-title active">ROCK PAPER SCISSORS</h1>
+        <div class = 'scroll active'><span></span><h5>Scroll</h5></div>
+    </div>
+    <div class = "wrapper" onscroll="hideOnScroll()">
+        <div class = "visuals">
+            <img src = "Planet-2.png" class = "planet-2">
+            <img src = "Planet-1.png" class = "planet-1">
+            <img src = "FarBackground.png" class = "far-background">
+            <img src = "Background.png" class = "background">
+            <img src = "Midground.png" class = "midground">
+            <img src = "Scissors.png" class = "scissors">
+            <img src = "Paper.png" class = "paper">
+            <img src = "Rock.png" class = "rock">
+            <img src = "Foreground.png" class = "foreground">
+            <img src = "Player.png" class = "player">
+        </div>
+        <div class = 'result'>
+        </div>
+        <div class = "player-area">
+            <div class = "player-sign-image">
+                <img src = "circle.svg" class = "rock-sign">
+                <img src = "rectangle.svg" class = "paper-sign">
+                <img src = "x.svg" class = "scissors-sign">
+            </div>
+            <div class = "computer-score">
+                0
+            </div>
+            <div class = "computer-score-label">
+                THEY
+            </div>
+            <div class="spinner-box">
+                <button class="play-button" title="play" onclick="beginPlay()">
+                    PLAY 
+                </button>
+                <div class = "ellipse1"></div>
+                <div class = "ellipse2"></div>
+                <div class = "ellipse3"></div>
+                <div class="solar-system">
+                  <div class="earth-orbit orbit">
+                    <div class="planet earth"></div>
+                    <div class="venus-orbit orbit">
+                      <div class="planet venus"></div>
+                      <div class="mercury-orbit orbit">
+                        <div class="planet mercury"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            <div class="countdown">
+            </div>
+            <div class = "player-score">
+                0
+            </div>
+            <div class = "player-score-label">
+                YOU
+            </div>
+            <div class = "player-choice">
+                
+                <button class="choice-rock" title="rock"
+                onclick="getSelected(1)">
+                    ROCK
+                </button>
+                <button class="choice-paper" title="paper"
+                        onclick="getSelected(2)">
+                    PAPER
+                </button>
+                <button class="choice-scissors" title="scissors"
+                        onclick="getSelected(3)">
+                    SCISSORS
+                </button>
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>

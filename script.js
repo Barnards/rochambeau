@@ -5,32 +5,99 @@
 /////////////////////////                              /////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-// Michael, AKA @Alchemi's Rock paper Scissors game
+// @Alchemi's Rock paper Scissors game
 
-// works best on chrome and edge
-// firefox a bit strange on subsequent page refreshes but otherwise ok
-// safari doesn't display result text but otherwise fine
+const PLANET2 = document.getElementsByClassName('planet-2')[0];
+const PLANET1 = document.getElementsByClassName('planet-1')[0];
+const FAR_BACKGROUND = document.getElementsByClassName('far-background')[0];
+const BACKGROUND = document.getElementsByClassName('background')[0];
+const MIDGROUND = document.getElementsByClassName('midground')[0];
+const HOVER_ROCKS = document.getElementsByClassName('hover-rocks')[0];
+const FOREGROUND = document.getElementsByClassName('foreground')[0];
+const PLAYER = document.getElementsByClassName('player')[0];
 
+const ELLIPSE1 = document.getElementsByClassName('ellipse1')[0];
+const ELLIPSE2 = document.getElementsByClassName('ellipse2')[0];
+const ELLIPSE3 = document.getElementsByClassName('ellipse3')[0];
 
+let animationLastConsidered = 0;
+
+function shouldAnimate(time) {
+    if (time <= animationLastConsidered) { return false; }
+    return true;
+}
+
+function setScrollVariable() {
+
+    const rootHtmlElement = document.documentElement;
+
+    const heightScrolled = rootHtmlElement.scrollTop / (
+        rootHtmlElement.scrollHeight - window.innerHeight
+    );
+
+    return +heightScrolled.toFixed(4) * 100;
+}
+
+window.addEventListener(
+    'scroll', 
+    () => {
+        hideOnScroll();
+        console.log(scrollY)
+
+        const scrollAmount = setScrollVariable();
+
+        function slide(element, velocity) {
+            const translateY = scrollAmount * velocity;
+
+            requestAnimationFrame((time)=> {
+                if (!shouldAnimate(time)) { return; }
+                element.style.transform = `translateY(${translateY}px)`;
+                return;
+            })
+
+        }
+
+        slide(PLANET2, 12.5);
+        slide(PLANET1, 12);
+        slide(FAR_BACKGROUND, 10);
+        slide(BACKGROUND, 8);
+        slide(MIDGROUND, 6);
+        slide(HOVER_ROCKS, 3.5);
+        slide(FOREGROUND, 3);
+        slide(PLAYER, 0);
+
+        return;
+    }
+);
+
+window.addEventListener(
+    'resize', 
+    () => {
+        setScrollVariable();
+        return;
+    }
+);
 
 // Function to change titles on scroll
 function titleCycle(){
-    const title1 = document.getElementsByClassName('rockpaperscissors-title')[0];
+    const title1 = document.getElementsByClassName(
+        'rockpaperscissors-title'
+    )[0];
     title1.classList.remove('active') 
-        setTimeout(()=>{
-            const rochambeauTitle = document.getElementsByClassName('rochambeau-title')[0];
-            rochambeauTitle.classList.add('active')
-        },1500)
+    setTimeout(()=>{
+        const rochambeauTitle = document.getElementsByClassName(
+            'rochambeau-title'
+        )[0];
+        rochambeauTitle.classList.add('active')
+    },1500)
+    return;
 }
 
-// hadnler for events as soon as the user scrolls
+// handler for events as soon as the user scrolls
 function hideOnScroll() {
-    if (document.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementsByClassName('scroll')[0].classList.add('active');
-    } else {
-        document.getElementsByClassName('scroll')[0].classList.remove('active');
-        titleCycle();
-    }
+    document.getElementsByClassName('scroll')[0].classList.remove('active');
+    titleCycle();
+    return;
 }
 
 
@@ -46,6 +113,7 @@ function visibilityToggle(
     } else {
       divVis.style.visibility = "hidden";
     }
+    return;
 }
 
 // get player choice from mouse
@@ -57,24 +125,36 @@ function getSelected(number){
 function getKey(playerSelection) {
     document.addEventListener('keydown', (event) => {
         playerSelection = event.key;
-        if (playerSelection < 1 || playerSelection > 3 || playerSelection == NaN ) {
+        if (
+            playerSelection < 1 || 
+            playerSelection > 3 || 
+            playerSelection == NaN 
+        ) {
             playerSelection = null;
             alert('wrong key, 1 = Rock, 2 = Paper. 3 = Scissors')
         }
     })
+    return;
 }
 
 // resets button and decor visibility when game is over
 function resetVisibility() {
-    document.getElementsByClassName('player-choice')[0].style.visibility = 'hidden';
-    document.getElementsByClassName('play-button')[0].style.visibility ='visible';
-    document.getElementsByClassName('spinner-box')[0].style.visibility ='visible';
-    document.getElementsByClassName('ellipse1')[0].style.visibility ='hidden';
-    document.getElementsByClassName('ellipse1')[0].style.animationName ='none';
-    document.getElementsByClassName('ellipse2')[0].style.visibility ='hidden';
-    document.getElementsByClassName('ellipse2')[0].style.animationName ='none';
-    document.getElementsByClassName('ellipse3')[0].style.visibility ='hidden';
-    document.getElementsByClassName('ellipse3')[0].style.animationName ='none';
+    document.getElementsByClassName(
+        'player-choice'
+    )[0].style.visibility = 'hidden';
+    document.getElementsByClassName(
+        'play-button'
+    )[0].style.visibility ='visible';
+    document.getElementsByClassName(
+        'spinner-box'
+    )[0].style.visibility ='visible';
+    ELLIPSE1.style.visibility ='hidden';
+    ELLIPSE1.style.animationName ='none';
+    ELLIPSE2.style.visibility ='hidden';
+    ELLIPSE2.style.animationName ='none';
+    ELLIPSE3.style.visibility ='hidden';
+    ELLIPSE3.style.animationName ='none';
+    return;
 }
 
 //creates a visual countdown for game start, placed underneath play button
@@ -87,6 +167,7 @@ function countDown (currentCount) {
     setTimeout(()=>{
         countDown.removeChild(countDownH2)
     },500)
+    return;
 }
 
 
@@ -109,6 +190,7 @@ function resultDisplay (displayedResult,explainedResult) {
         resultDiv.removeChild(resultH3)
         resultDiv.removeChild(resultH5)
     },4000)
+    return;
 }
 
 
@@ -144,6 +226,7 @@ function scoreCounter (playerCount,computerCount) {
         playerScoreH4.innerText = 0;
         computerScoreH4.innerText = 0;
     }
+    return;
 }
 
 
@@ -153,19 +236,19 @@ function rockHover(rock,paper,scissors) {
     const root = document.documentElement;
 
     if (rock == true) {
-        root.style.setProperty('--rock-object-float', 160 + "vh");
+
+        root.style.setProperty('--rock-object-float', -200 + "px");
 
     }else if (paper == true) {
-        root.style.setProperty('--paper-object-float', 160 + "vh");
+        root.style.setProperty('--paper-object-float', -200 + "px");
         
     }else if (scissors == true) {
-        root.style.setProperty('--scissors-object-float', 160 + "vh");
+        root.style.setProperty('--scissors-object-float', -200 + "px");
         
     }else{
-        root.style.setProperty('--rock-object-float', 200 + "vh");
-        root.style.setProperty('--paper-object-float', 200 + "vh");
-        root.style.setProperty('--scissors-object-float', 200 + "vh");
-        
+        root.style.setProperty('--rock-object-float', 0 + "px");
+        root.style.setProperty('--paper-object-float', 0 + "px");
+        root.style.setProperty('--scissors-object-float', 0 + "px");
     }
 
     //  reset rock position after 5 seconds of inactivity
@@ -174,17 +257,8 @@ function rockHover(rock,paper,scissors) {
             rockHover(false,false,false)
         },5000)
     }
+    return;
 }
-
-//stops whitespace from forming below parallax images
-//only fix i could find for the translateZ margin the images created at the bottom
-if (navigator.userAgent.search("Firefox") >= 0) {
-    const wrapper = document.getElementsByClassName('wrapper')[0];
-    window.onscroll = function () { wrapper.scrollTo(0, 90); };
-} else { 
-    window.onscroll = function () { window.scrollTo(0, 0); };  
-}
-
 
 //displays player's choice as a magic symbol
 function playerMagic(rock,paper,scissors) {
@@ -196,15 +270,12 @@ function playerMagic(rock,paper,scissors) {
 
     }else if (paper == true) {
         root.style.setProperty('--paper-magic-visible',1);
-        console.log(rock,paper,scissors)
     }else if (scissors == true) {
         root.style.setProperty('--scissors-magic-visible',1);
-        console.log(rock,paper,scissors)
     }else{
         root.style.setProperty('--rock-magic-visible',0);
         root.style.setProperty('--paper-magic-visible',0);
         root.style.setProperty('--scissors-magic-visible',0);
-        console.log(rock,paper,scissors)
     }
 
     //  reset magic visibility after 5 seconds of inactivity
@@ -213,10 +284,8 @@ function playerMagic(rock,paper,scissors) {
             playerMagic(false,false,false)
         },5000)
     }
+    return;
 }
-
-
-
 
 //  beware, you're about to enter...
 
@@ -234,34 +303,33 @@ function beginPlay(){
     visibilityToggle("play-button"); //hide play button
     visibilityToggle("spinner-box"); //hide spinner box
     visibilityToggle("ellipse1");    
-    document.getElementsByClassName('ellipse1')[0].style.animationName ='ellipse1';
+    ELLIPSE1.style.animationName ='ellipse1';
     visibilityToggle("ellipse2");
-    document.getElementsByClassName('ellipse2')[0].style.animationName ='ellipse2';
+    ELLIPSE2.style.animationName ='ellipse2';
     visibilityToggle("ellipse3");
-    document.getElementsByClassName('ellipse3')[0].style.animationName ='ellipse3';
+    ELLIPSE3.style.animationName ='ellipse3';
     playerSelection = false;  // if the player fails to select
     setTimeout(() => {
-        console.log('2');
         countDown('RO');
         setTimeout(() => {
-            console.log('1');   // countdown
             countDown('SHAM'); 
             setTimeout(() => {
-                console.log('throw!')
                 countDown('BEAU');
                 visibilityToggle("player-choice"); // display buttons
                 setTimeout(() => { 
                     visibilityToggle("player-choice"); //remove buttons after 1.2sec
-                    document.getElementsByClassName('ellipse1')[0].style.visibility ='hidden';
-                    document.getElementsByClassName('ellipse1')[0].style.animationName ='none';
-                    document.getElementsByClassName('ellipse2')[0].style.visibility ='hidden';
-                    document.getElementsByClassName('ellipse2')[0].style.animationName ='none';
-                    document.getElementsByClassName('ellipse3')[0].style.visibility ='hidden';
-                    document.getElementsByClassName('ellipse3')[0].style.animationName ='none'; 
+                    ELLIPSE1.style.visibility ='hidden';
+                    ELLIPSE1.style.animationName ='none';
+                    ELLIPSE2.style.visibility ='hidden';
+                    ELLIPSE2.style.animationName ='none';
+                    ELLIPSE3.style.visibility ='hidden';
+                    ELLIPSE3.style.animationName ='none'; 
                     setTimeout(()=>{
                         
                         //generate computer input
-                        const computerSelection = Math.floor(Math.random() * (4 - 1) + 1);
+                        const computerSelection = Math.floor(
+                            Math.random() * (4 - 1) + 1
+                        );
                         
                             //create a string name out of computer input
                             if (computerSelection === 1 ){
@@ -279,7 +347,6 @@ function beginPlay(){
                             }else if (computerSelection === 3 ) {
                                 rockHover(false,false,true);
                             }
-                            console.log("Computer threw: " ,computerSign);
 
                         //get player's click/touch input
                         getSelected(playerSelection);
@@ -292,8 +359,10 @@ function beginPlay(){
                             }else if (playerSelection === 3 ) {
                                 playerSign = 'Scissors';
                             }else if (playerSelection  === false) {
-                                console.log('You lose','hesitation is defeat');
-                                resultDisplay('YOU LOSE', 'hesitation is defeat');
+                                resultDisplay(
+                                    'YOU LOSE', 
+                                    'hesitation is defeat'
+                                );
                                 scoreCounter (0,1);
                                 resetVisibility();
                                 clearTimeout();
@@ -308,23 +377,27 @@ function beginPlay(){
                                 playerMagic(false,false,true);
                             }
 
-                            console.log("you threw: " ,playerSign);
                         // compare computer and player inputs
                         const score = playerSelection - computerSelection;
-                        console.log(score);
         
                         //calculate the winner and explain decision
                         if (score == -4 || score == 1||score == -2){
-                            console.log('You win! :' + playerSign + ' beats ' + computerSign);
-                            resultDisplay('YOU WIN', playerSign + ' beats ' + computerSign);
+                            resultDisplay(
+                                'YOU WIN', 
+                                playerSign + ' beats ' + computerSign
+                            );
                             scoreCounter (1,0);  
                         }else if (score == 2 || score == -1){
-                            console.log('You lose... :' + computerSign + ' beats ' + playerSign);
-                            resultDisplay('YOU LOSE...' , computerSign + ' beats ' + playerSign);
+                            resultDisplay(
+                                'YOU LOSE...', 
+                                computerSign + ' beats ' + playerSign
+                            );
                             scoreCounter (0,1);
                         }else if (score == 0){
-                            console.log('Draw :' + computerSign + ' ties ' + playerSign);
-                            resultDisplay('DRAW', computerSign + ' ties ' + playerSign);
+                            resultDisplay(
+                                'DRAW', 
+                                computerSign + ' ties ' + playerSign
+                            );
                             scoreCounter (1,1);
                         }
                         setTimeout(()=>{
@@ -336,4 +409,5 @@ function beginPlay(){
             },800) //BEAU!, player choice appears
         },800) //SHAM
     },200) //RO
+    return;
 }
